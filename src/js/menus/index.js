@@ -3,6 +3,7 @@
 */
 import { objForEach } from '../util/util.js'
 import MenuConstructors from './menu-list.js'
+import $ from '../util/dom-core.js'
 
 // 构造函数
 function Menus(editor) {
@@ -27,7 +28,7 @@ Menus.prototype = {
                 // 创建单个菜单
                 this.menus[menuKey] = new MenuConstructor(editor)
             } else if (config.toolbarCreator instanceof Function) {
-                const userDef = config.toolbarCreator(menuKey, editor, this)
+                const userDef = config.toolbarCreator(menuKey, editor, $, this)
                 if (userDef) {
                     this.menus[menuKey] = userDef
                 }

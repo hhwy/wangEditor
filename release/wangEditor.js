@@ -2925,7 +2925,7 @@ Menus.prototype = {
                 // 创建单个菜单
                 _this.menus[menuKey] = new MenuConstructor(editor);
             } else if (config.toolbarCreator instanceof Function) {
-                var userDef = config.toolbarCreator(menuKey, editor, _this);
+                var userDef = config.toolbarCreator(menuKey, editor, $, _this);
                 if (userDef) {
                     _this.menus[menuKey] = userDef;
                 }
