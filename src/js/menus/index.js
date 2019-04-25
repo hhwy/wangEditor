@@ -26,6 +26,11 @@ Menus.prototype = {
             if (MenuConstructor && typeof MenuConstructor === 'function') {
                 // 创建单个菜单
                 this.menus[menuKey] = new MenuConstructor(editor)
+            } else if (config.toolbarCreator instanceof Function) {
+                const userDef = config.toolbarCreator(menuKey, editor, this)
+                if (userDef) {
+                    this.menus[menuKey] = userDef
+                }
             }
         })
 
